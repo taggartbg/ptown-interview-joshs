@@ -1,12 +1,11 @@
 import "./Preview.css";
 
 import PropTypes from "prop-types";
-import React from "react";
-
+import React, { useContext }  from "react";
+import { AppContext } from './AppContext';
 // TODO: Make content and styling dynamic
 function Preview(props) {
-  const partySize = 2;
-
+  const { feedBack, partyCount } = useContext(AppContext);
   return (
     <section className="preview">
       <div className="preview-label">Preview of your review</div>
@@ -17,10 +16,10 @@ function Preview(props) {
           </span>
         </div>
         <div className="preview-feedback placeholder-color">
-          {props.feedbackPlaceholder}
+          {feedBack}
         </div>
         <div className="preview-party">
-          {partySize} {partySize > 1 ? "people" : "person"} dined here.
+          {partyCount} {partyCount > 1 ? "people" : "person"} dined here.
         </div>
       </div>
     </section>
